@@ -1,7 +1,10 @@
 
 
-const initialState = {
-    articles: [{
+//const _apiFish = 'https://jsonplaceholder.typicode.com/posts';
+
+export default class userService {
+    data = [
+        {
             "userId": 1,
             "id": 1,
             "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
@@ -12,23 +15,13 @@ const initialState = {
             "id": 2,
             "title": "qui est esse",
             "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
-          }]
-};
-
-const reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case 'FETCH_USER_SUCCES':
-            console.log(action.type)
-            return state;
-        case 'FETCH_USER_FAILURE':
-            console.log(action.type)
-            return state;
-        case 'FETCH_USER_REQUEST':
-            console.log(action.type)
-            return state;
-        default:
-            return state;
+          }
+    ]
+    getUsers() {
+        return new Promise((res) => {
+            setTimeout(() => {
+                res(this.data);
+            }, 2000);
+        });
     }
-};
-
-export default reducer;
+}
