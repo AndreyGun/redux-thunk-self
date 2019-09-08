@@ -6,15 +6,15 @@ import Post from '../post';
 
 const PostList = ({ posts }) => {
    return(
-    <div>
-        {
-            posts.map( post => {
-                return (<div key={post.id} className="post-item">
-                    <Post post={post}/>
-                </div>)
-            })
-        }
-    </div>
+        <div>
+            {
+                posts.map( post => {
+                    return (<div key={post.id} className="post-item">
+                        <Post post={post}/>
+                    </div>)
+                })
+            }
+        </div>
    );
 }
 
@@ -24,10 +24,13 @@ class PostListContainer extends Component {
         this.props.fetchPosts();
     }
     render() {
-        const { posts, loading} = this.props;
+        const { posts, loading, error} = this.props;
 
         if (loading) {
             return <div>Loading...</div>
+        }
+        if ( error ) {
+            return <div>Ooops....</div>
         }
         return(
             <PostList posts={posts}/>
@@ -35,13 +38,13 @@ class PostListContainer extends Component {
     }
 }
 
-const mapStateToProps = ({ posts, loading }) => {
+const mapStateToProps = ({ posts, loading, error }) => {
     console.log(posts, ' mapStateToProps posts');
     return {
         // аналогично
         // articles: articles или
         // articles: state.articles если не деструктурировать стейт
-        posts, loading
+        posts, loading, error
     }
 }
 

@@ -12,13 +12,13 @@ const postError = (error) => ({
 
 
 const fetchPosts = (dispatch) => () => {
-    dispatch(postRequest);
+    dispatch(postRequest());
     // setTimeout только для примера
     setTimeout(() => {
         fetch('https://jsonplaceholder.typicode.com/posts')
             .then(data => data.json())
             .then((posts) => dispatch(postLoaded(posts)))
-            .catch((error) => dispatch(postError(error)));
+            .catch(() => dispatch(postError()));
     }, 1000);
 }
 

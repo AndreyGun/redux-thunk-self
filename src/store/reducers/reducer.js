@@ -1,7 +1,8 @@
 
 const initialState = {
     posts: [],
-    loading: true
+    loading: true,
+    error: false
 };
 
 const loadPosts = (state = initialState, action) => {
@@ -9,16 +10,20 @@ const loadPosts = (state = initialState, action) => {
         case 'FETCH_POST_REQUEST':
             return {
                 posts: [],
-                loading: true
+                loading: true,
+                error: false
             };
         case 'FETCH_POST_SUCCES':
             return {
                 posts: action.payload,
-                loading: false
+                loading: false,
+                error: false
             };
         case 'FETCH_POST_FAILURE':
             return {
-                posts: action.payload
+                posts: [],
+                loading: false,
+                error: true
             };
         default:
             return state;
