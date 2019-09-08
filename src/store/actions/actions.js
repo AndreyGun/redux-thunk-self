@@ -1,7 +1,27 @@
 
 
-export const request = () => ({type: 'FETCH_USER_REQUEST'});
+const postRequest = () => ({type: 'FETCH_POST_REQUEST'});
+const postLoaded = (posts) => ({
+    type: 'FETCH_POST_SUCCES',
+    payload: posts
+});
+const postError = (error) => ({
+    type: 'FETCH_POST_FAILURE',
+    payload: error
+});
 
-export const succes = () => ({type: 'FETCH_USER_SUCCES'});
 
-export const failure = () => ({type: 'FETCH_USER_FAILURE'});
+const fetchPosts = (dispatch) => () => {
+    dispatch(postRequest);
+    // setTimeout только для примера
+    setTimeout(() => {
+        fetch('https://jsonplaceholder.typicode.com/posts')
+            .then(data => data.json())
+            .then((posts) => dispatch(postLoaded(posts)))
+            .catch((error) => dispatch(postError(error)));
+    }, 1000);
+}
+
+export {
+    fetchPosts
+};

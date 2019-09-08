@@ -1,13 +1,10 @@
 import React from 'react';
 
-
-
-const Post = ({ article }) => {
-    
+const Post = ({ post }) => {
     return(
         <div className="acrticle">
-            <h2>{article.title}</h2>
-            <p>{article.body}</p>
+            <h2>{post.title}</h2>
+            <p>{post.body}</p>
         </div>
     );
 }
