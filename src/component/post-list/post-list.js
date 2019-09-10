@@ -4,14 +4,18 @@ import { connect } from 'react-redux';
 import { fetchPosts } from '../../store/actions/actions';
 import Post from '../post';
 
+import './post-list.css';
+
 const PostList = ({ posts }) => {
    return(
-        <div>
+        <div className="post-list">
             {
                 posts.map( post => {
-                    return (<div key={post.id} className="post-item">
-                        <Post post={post}/>
-                    </div>)
+                    return (
+                        <div key={post.id} className="post-item">
+                            <Post post={post}/>
+                        </div>
+                    )
                 })
             }
         </div>

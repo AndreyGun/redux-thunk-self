@@ -1,5 +1,3 @@
-
-
 const postRequest = () => ({type: 'FETCH_POST_REQUEST'});
 const postLoaded = (posts) => ({
     type: 'FETCH_POST_SUCCES',
